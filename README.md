@@ -15,3 +15,6 @@ Até onde ja foi visto:
 - Utilização de eventos
 - Delete 
 
+Postman: 
+
+![Postman](https://user-images.githubusercontent.com/75328283/126040641-ef3e6cce-3b0f-4f57-be3f-a1a309d9430e.png)
