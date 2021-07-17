@@ -32,7 +32,7 @@ Delete:
 Updade: 
 ![AtualizarPessoa](https://user-images.githubusercontent.com/75328283/126044315-b32852ac-e5e3-425c-817b-1a97578c0081.png)
 
-Updade na pripriedade Ativo em Pessoa:
+Updade na pripriedade Ativo em Pessoa: 
 ![AtualizaçãoParcial](https://user-images.githubusercontent.com/75328283/126044338-3412e857-77c3-4f48-a766-71cbae615683.png)
 
  
