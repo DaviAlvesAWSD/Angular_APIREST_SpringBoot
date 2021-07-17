@@ -17,7 +17,7 @@ public class Pessoa {
 	private Long codigo;
 	
 	@NotNull
-	@Size(min = 3, max = 20)
+	@Size(min = 3, max = 50)
 	private String nome;
 	
 	@Embedded

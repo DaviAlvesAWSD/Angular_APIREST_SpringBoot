@@ -10,11 +10,13 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.algamoney.api.event.RecursoCriadoEvent;
@@ -33,13 +35,22 @@ public class CategoriaResource {
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
+// -------------------------------------------GET-----------------------------------------------------------------		
 	// GET Request 
 	@GetMapping
 	public ResponseEntity<?> listar(){
 		List<Categoria> categorias =  categoriaRepository.findAll();
 		return !categorias.isEmpty()? ResponseEntity.ok(categorias) : ResponseEntity.noContent().build();
 	}
+// -------------------------------------------GET by ID-----------------------------------------------------------------		
+	// GET Request with Id 
+	@GetMapping("/{codigo}")
+	public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
+		Categoria categoria = categoriaRepository.findById(codigo).orElse(null);
+		return categoria != null ?  ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
+	}
 	
+// -------------------------------------------POST-----------------------------------------------------------------	
 	// Post Request
 	@PostMapping
 	public ResponseEntity<Categoria> criar(@Validated @RequestBody Categoria categoria, HttpServletResponse response) {
@@ -49,12 +60,13 @@ public class CategoriaResource {
 		
 		return ResponseEntity.status(HttpStatus.CREATED).body(categoriaSalva);
 	}
-	
-	// GET Request with Id 
-	@GetMapping("/{codigo}")
-	public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
-		Categoria categoria = categoriaRepository.findById(codigo).orElse(null);
-		return categoria != null ?  ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
+//-------------------------------------------DELETE-----------------------------------------------------------------		
+	@DeleteMapping("/{codigo}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable Long codigo){
+		categoriaRepository.deleteById(codigo);
+		
 	}
+	
 	
 }
