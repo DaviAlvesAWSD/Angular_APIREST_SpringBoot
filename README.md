@@ -21,7 +21,7 @@ Postman:
 
 # Dia 17/07/2021
 
-- função de delete para as categorias implementada, antes eu só tinha adicionado em pessoas
+- função de delete para as categorias implementadas, antes eu só tinha adicionado em pessoas
 
 Delete:
 ![deletarCategoria](https://user-images.githubusercontent.com/75328283/126044292-e1d9a1dd-e498-4731-a6da-21c566cbcccd.png)
