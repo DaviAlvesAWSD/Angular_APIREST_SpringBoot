@@ -21,18 +21,20 @@ Postman:
 
 # Dia 17/07/2021
 
-- função de delete para as categorias adicionada, antes eu só tinha adicionado em pessoas
+- função de delete para as categorias implementada, antes eu só tinha adicionado em pessoas
 
 Delete:
 ![deletarCategoria](https://user-images.githubusercontent.com/75328283/126044292-e1d9a1dd-e498-4731-a6da-21c566cbcccd.png)
 
 
-- Função de Put(Update) em Pessoa adcionada + Put parcial(apenas de uma pripriedade em especifica)
+- Função de Put(Update) em Pessoa implementada + Put parcial(apenas de uma pripriedade em especifica)
 
 Updade: 
 ![AtualizarPessoa](https://user-images.githubusercontent.com/75328283/126044315-b32852ac-e5e3-425c-817b-1a97578c0081.png)
 
 Updade na pripriedade Ativo em Pessoa: 
 ![AtualizaçãoParcial](https://user-images.githubusercontent.com/75328283/126044338-3412e857-77c3-4f48-a766-71cbae615683.png)
+
+- Migration e model de Lançamento foram implementadas.
 
  
