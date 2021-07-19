@@ -56,4 +56,8 @@ GET by ID
 
 ![Validando Lançamento com BEAN Validation](https://user-images.githubusercontent.com/75328283/126211173-cb4005c9-19ae-487f-89f9-ca10ad8dcd85.png)
 
- 
+- Implementando pesquisa de lancamento com Metamodel
+- Paginação implementada 
+![Paginação](https://user-images.githubusercontent.com/75328283/126239644-40c30900-e607-4b46-a0b7-52daf5d255cd.png)
+
+
