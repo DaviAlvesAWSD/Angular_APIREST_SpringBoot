@@ -37,4 +37,15 @@ Updade na pripriedade Ativo em Pessoa:
 
 - Migration e model de Lançamento foram implementadas.
 
+# Dia 19/07/2021
+
+- Resource, Repository de lançamento foram implementados.
+- Requisição Get e Requisição Get by id em lançamento implementadas.
+
+GET REQUEST
+![ListarLancamento](https://user-images.githubusercontent.com/75328283/126201761-1489bf1c-04ba-4c9b-84f1-3e92ac55b13d.png)
+
+GET by ID
+![Lista lancamento by id](https://user-images.githubusercontent.com/75328283/126201802-4461992f-9a06-4a99-a39c-61e5c32a0cc2.png)
+
  
