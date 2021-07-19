@@ -48,4 +48,12 @@ GET REQUEST
 GET by ID
 ![Lista lancamento by id](https://user-images.githubusercontent.com/75328283/126201802-4461992f-9a06-4a99-a39c-61e5c32a0cc2.png)
 
+- Validando incosistencias em lançamento
+
+![Validando Icoerencias](https://user-images.githubusercontent.com/75328283/126210898-264e73b6-837a-4c4b-a479-c54ecd218534.png)
+
+-  Validando Lançamento com Bean validetion 
+
+![Validando Lançamento com BEAN Validation](https://user-images.githubusercontent.com/75328283/126211173-cb4005c9-19ae-487f-89f9-ca10ad8dcd85.png)
+
  
