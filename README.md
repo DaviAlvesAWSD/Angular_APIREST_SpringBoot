@@ -61,4 +61,8 @@ GET by ID
  
 ![Paginação](https://user-images.githubusercontent.com/75328283/126239644-40c30900-e607-4b46-a0b7-52daf5d255cd.png)
 
+- Autenticação basica implementada
+
+![AuthBasico](https://user-images.githubusercontent.com/75328283/126244900-3cb0952f-bff9-4a48-9487-8e8b1ba5d7f2.png)
+
 
