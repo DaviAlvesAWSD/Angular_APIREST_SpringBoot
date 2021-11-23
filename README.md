@@ -65,4 +65,11 @@ GET by ID
 
 ![AuthBasico](https://user-images.githubusercontent.com/75328283/126244900-3cb0952f-bff9-4a48-9487-8e8b1ba5d7f2.png)
 
+# Dia 23/11/2021
+
+- Autenticação O Auth2 e JWToken implementados
+
+![OAuth2](https://user-images.githubusercontent.com/75328283/143110355-41bce256-14aa-40e2-b7ef-b5b451fbcb50.png)
+
+![JWToken](https://user-images.githubusercontent.com/75328283/143110459-5aaafc31-63ac-4d61-ae80-a9cb600d1867.png)
 
