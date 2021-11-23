@@ -33,7 +33,7 @@ import com.example.algamoney.api.service.PessoaService;
 @RequestMapping("/pessoa")
 public class PessoaResource {
 	
-	@Autowired
+	@Autowired 
 	private PessoaRepository pessoaRepository;
 	
 	@Autowired

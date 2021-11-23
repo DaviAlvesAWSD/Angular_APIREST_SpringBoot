@@ -9,15 +9,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.algamoney.api.event.RecursoCriadoEvent;
@@ -51,12 +55,12 @@ public class LancamentoResource {
 	
 
 	@GetMapping
-	public ResponseEntity<?> pesquisar(LancamentoFilter lancamentoFilter){
-		List<Lancamento> lancamento = lancamentoRepository.Filtrar(lancamentoFilter);
+	public ResponseEntity<?> pesquisar(LancamentoFilter lancamentoFilter, Pageable pageable){
+		Page<Lancamento> lancamento = lancamentoRepository.Filtrar(lancamentoFilter, pageable);
 		return !lancamento.isEmpty() ? ResponseEntity.ok(lancamento) : ResponseEntity.noContent().build();
 	}
 	
-// -------------------------------------------GET by Id-----------------------------------------------------------------	
+// -------------------------------------------GET by Id--------------------------------------------------------------------------------------------------------------	
 			
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Lancamento> buscarPeloCodigo(@PathVariable Long codigo){
@@ -65,7 +69,7 @@ public class LancamentoResource {
 		
 	}
 	
-// -------------------------------------------POST-----------------------------------------------------------------------			
+// -------------------------------------------POST--------------------------------------------------------------------------------------------------------------------			
 	@PostMapping
 	public ResponseEntity<Lancamento> criar(@Validated @RequestBody Lancamento lancamento, HttpServletResponse response) throws PessoaInexistenteOuInativaException {
 		Lancamento lancamentoSalvo = lancamentoService.salvar(lancamento);
@@ -83,4 +87,13 @@ public class LancamentoResource {
 		return ResponseEntity.badRequest().body(erros);
 		
 	}
+// --------------------------------------------DELETE----------------------------------------------------------------------------------------------------------------			
+
+	@DeleteMapping("/{codigo}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void remover(@PathVariable Long codigo){
+		lancamentoRepository.deleteById(codigo);
+		
+	}
+		
 }
