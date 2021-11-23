@@ -38,16 +38,15 @@ public class CategoriaResource {
 // -------------------------------------------GET-----------------------------------------------------------------		
 	// GET Request 
 	@GetMapping
-	public ResponseEntity<?> listar(){
-		List<Categoria> categorias =  categoriaRepository.findAll();
-		return !categorias.isEmpty()? ResponseEntity.ok(categorias) : ResponseEntity.noContent().build();
+	public List<Categoria> listar(){ 
+		return categoriaRepository.findAll();
 	}
 // -------------------------------------------GET by ID-----------------------------------------------------------------		
 	// GET Request with Id 
 	@GetMapping("/{codigo}")
 	public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
 		Categoria categoria = categoriaRepository.findById(codigo).orElse(null);
-		return categoria != null ?  ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
+		return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
 	}
 	
 // -------------------------------------------POST-----------------------------------------------------------------	
