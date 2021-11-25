@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.crypto.spec.SecretKeySpec;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +18,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.jwt.JwtDecoder;
@@ -29,6 +31,9 @@ import org.springframework.security.oauth2.server.resource.authentication.JwtGra
 @EnableWebSecurity
 public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
      
+    @Autowired
+    private UserDetailsService userDetailsService;
+	
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
@@ -41,7 +46,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
     public void configure(HttpSecurity http) throws Exception {
         
         http.authorizeRequests()
-                //.antMatchers("/categorias").permitAll()
+                .antMatchers("/categorias").permitAll()
                 .anyRequest().authenticated()
             .and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
@@ -50,6 +55,13 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
                 .oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter());
     }
     
+
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        return super.userDetailsService();
+    }
+
     @Bean
     public JwtDecoder jwtDecoder() {
         var secretKey = new SecretKeySpec("3032885ba9cd6621bcc4e7d6b6c35c2b".getBytes(), "HmacSHA256");
@@ -67,7 +79,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
     }
-    
+        
     private JwtAuthenticationConverter jwtAuthenticationConverter() {
 		JwtAuthenticationConverter jwtAuthenticationConverter = new JwtAuthenticationConverter();
 		jwtAuthenticationConverter.setJwtGrantedAuthoritiesConverter(jwt -> {
@@ -89,5 +101,4 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
 
 		return jwtAuthenticationConverter;
 	}
-    
 }
