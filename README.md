@@ -73,3 +73,7 @@ GET by ID
 
 ![JWToken](https://user-images.githubusercontent.com/75328283/143110459-5aaafc31-63ac-4d61-ae80-a9cb600d1867.png)
 
+# Dia 25/11/2021
+
+- Refresh token implementado
+
