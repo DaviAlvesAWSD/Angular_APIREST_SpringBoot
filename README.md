@@ -77,3 +77,9 @@ GET by ID
 
 - Refresh token implementado
 
+# Dia 26/11/2021
+
+- Transferir o Refresh token para dentro de um Cookie implementado
+
+![Colocar o refresh token dentro de um cookie](https://user-images.githubusercontent.com/75328283/143624654-5d5cec98-c286-4416-80dc-cf4c0f426777.png)
+
