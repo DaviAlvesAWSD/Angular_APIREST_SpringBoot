@@ -12,6 +12,7 @@ import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 //import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -74,6 +75,7 @@ public class PessoaResource {
 	//POST Request 
 	//Requisição post em parametros REST com um Evento
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<Pessoa> criar(@Validated @RequestBody Pessoa pessoa, HttpServletResponse response) {
 		Pessoa pessoaSalva = pessoaRepository.save(pessoa);
 		
@@ -95,6 +97,7 @@ public class PessoaResource {
 	//GET Request 
 	// validando se existe registro dentro da tabela pessoa 
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<?> listar(){
 		List<Pessoa> pessoas = pessoaRepository.findAll();
 		return !pessoas.isEmpty() ? ResponseEntity.ok(pessoas) : ResponseEntity.noContent().build();
@@ -113,6 +116,7 @@ public class PessoaResource {
 	//GET Request with Id 
 	//validação do id, caso não exista retornar erro 404
 	@GetMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_PESSOA') and hasAuthority('SCOPE_write')")
 	public ResponseEntity<Pessoa> buscarPeloCodigo(@PathVariable Long codigo) {
 		Pessoa pessoa = pessoaRepository.findById(codigo).orElse(null);
 		return pessoa != null ? ResponseEntity.ok(pessoa) : ResponseEntity.notFound().build();
@@ -123,6 +127,7 @@ public class PessoaResource {
 	
 	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_REMOVER_PESSOA') and hasAuthority('SCOPE_write')")
 	public void remover(@PathVariable Long codigo){
 		pessoaRepository.deleteById(codigo);
 		
@@ -158,6 +163,7 @@ public class PessoaResource {
 	
 	@PutMapping("/{codigo}/ativo")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_PESSOA') and hasAuthority('SCOPE_write')")
 	public void atualizarPropiedadeAtivo(@PathVariable Long codigo, @RequestBody Boolean ativo){
 		pessoaService.atualizarPropriedadeAtivo(codigo, ativo);
 	}
