@@ -83,3 +83,10 @@ GET by ID
 
 ![Colocar o refresh token dentro de um cookie](https://user-images.githubusercontent.com/75328283/143624654-5d5cec98-c286-4416-80dc-cf4c0f426777.png)
 
+# Dia 01/12/2021
+
+- CORS implementado
+- Moção de usuario para o banco de dados implementada
+- Permissões de acesso implementadas
+- Logout implementado
+- Projeção de lançamento implementa
