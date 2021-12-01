@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,12 +39,14 @@ public class CategoriaResource {
 // -------------------------------------------GET-----------------------------------------------------------------		
 	// GET Request 
 	@GetMapping
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and hasAuthority('SCOPE_read')" )
 	public List<Categoria> listar(){ 
 		return categoriaRepository.findAll();
 	}
 // -------------------------------------------GET by ID-----------------------------------------------------------------		
 	// GET Request with Id 
 	@GetMapping("/{codigo}")
+	@PreAuthorize("hasAuthority('ROLE_PESQUISAR_CATEGORIA') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<Categoria> buscarPeloCodigo(@PathVariable Long codigo) {
 		Categoria categoria = categoriaRepository.findById(codigo).orElse(null);
 		return categoria != null ? ResponseEntity.ok(categoria) : ResponseEntity.notFound().build();
@@ -52,6 +55,7 @@ public class CategoriaResource {
 // -------------------------------------------POST-----------------------------------------------------------------	
 	// Post Request
 	@PostMapping
+	@PreAuthorize("hasAuthority('ROLE_CADASTRAR_CATEGORIA') and hasAuthority('SCOPE_read')")
 	public ResponseEntity<Categoria> criar(@Validated @RequestBody Categoria categoria, HttpServletResponse response) {
 		Categoria categoriaSalva = categoriaRepository.save(categoria);
 		
