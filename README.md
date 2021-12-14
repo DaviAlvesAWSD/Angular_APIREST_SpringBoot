@@ -1,4 +1,4 @@
-# Angular_REST_SpringBoot
+# Angular_APIREST_SpringBoot
 Projeto Criado durante a realização do curso Angular, REST SpringBoot
 
 Infelizmente só criei esse repositorio em uma determinada etapa mais avançada do curso. 
@@ -90,3 +90,15 @@ GET by ID
 - Permissões de acesso implementadas
 - Logout implementado
 - Projeção de lançamento implementa
+
+# Dia 14/12/2021
+
+- Profiles do Spring implementados
+- Nome do usuario no JWToken implementado
+- Alternância entre Oauth2 e Basic Security implementada
+- Pesquisa de pessoa implementada
+- Atualização de Lançamento implementada
+
+ *APIREST - SPRINGBOOT FINALIZADA
+
+Obs: A parte de Bakend com Springboot foi finalizada pelo dia 03/12 porém havia esquecido de fazer a atualização aqui no git. 
