@@ -130,5 +130,6 @@ Pratica:
 - Protótipo de tabela de dados implementado
 - ng-template implementado
 
-![Protótipo pesquisa e tabela de dados de lançamentos](https://user-images.githubusercontent.com/75328283/148244544-815501b6-ba2f-4e86-b431-21646b2c7892.png)
+![Protótipo pesquisa e tabela de dados de lançamentos](https://user-images.githubusercontent.com/75328283/148245235-30e3bac0-46ec-4742-af12-e77d1441d0ce.png)
+
 
