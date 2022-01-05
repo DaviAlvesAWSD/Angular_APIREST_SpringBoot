@@ -109,25 +109,26 @@ Primeiro commit da parte do frontend do projeto
 
 Partes teóricas:
 
-components
-Introdução a data binding
-Interpolação
-Event binding
-Variável de referência
-Property binding
-Two-way data binding
-diretivas
-diretiva ngFor
-@input
-@output e EventEmitter
-CSS dinâmico com ngStyle
-Classes CSS dinamicas com ngClass
+- components
+- Introdução a data binding
+- Interpolação
+- Event binding
+- Variável de referência
+- Property binding
+- Two-way data binding
+- diretivas
+- diretiva ngFor
+- @input
+- @output e EventEmitter
+- CSS dinâmico com ngStyle
+- Classes CSS dinamicas com ngClass
+
 Pratica:
 
-Protótipo do projeto criado
-Protótipo de pesquisa de Lançamentos implementado
-Protótipo de tabela de dados implementado
-ng-template implementado
+- Protótipo do projeto criado
+- Protótipo de pesquisa de Lançamentos implementado
+- Protótipo de tabela de dados implementado
+- ng-template implementado
 
 ![Protótipo pesquisa e tabela de dados de lançamentos](https://user-images.githubusercontent.com/75328283/148244544-815501b6-ba2f-4e86-b431-21646b2c7892.png)
 
