@@ -156,3 +156,43 @@ Obs:  uma boa parte do projeto já foi frontend já foi feita então o proximo c
 - errorHendlerService aprofundada
 - Mudança de status de pessoa Implementada
 
+Menu intercambiavel: 
+![Menu Intercambiavel](https://user-images.githubusercontent.com/75328283/151612534-94c0abfa-0da5-4386-8c4c-56b47a7b3e8d.png)
+
+Consulta de Pessoas:
+![Consulta de Pessoa](https://user-images.githubusercontent.com/75328283/151612116-a32d3d19-d51b-4d9c-9e87-ad70f9cf9fd2.png)
+
+Filtro de busca de Pessoas:
+![Pessoas Filtro](https://user-images.githubusercontent.com/75328283/151612385-b8cec4e3-341d-4531-9aee-02c9f2eab1bd.png)
+
+Consulta de Lcançamentos:
+![Consulta de Lançamentos](https://user-images.githubusercontent.com/75328283/151612836-acdc17fd-8cf8-4347-bba0-1d4cef37839f.png)
+
+Filtro de busca de Lançamentos:
+![Lançamento Filtros](https://user-images.githubusercontent.com/75328283/151616062-190f5272-812d-4e26-8b4b-6e8c0e435f98.png)
+
+DialogConfirm:
+![confirmDialog](https://user-images.githubusercontent.com/75328283/151616887-8fddbbf1-4a78-4c71-82ee-8fc2d8762ac3.png)
+
+DialogConfirm-toasty:
+![confirmDIalog-toasty](https://user-images.githubusercontent.com/75328283/151616918-6319b47d-97a8-472a-9ef3-59d43eb71e99.png)
+
+DialogConfirm-toasty-reject:
+![confirmDIalog-toasty-reject](https://user-images.githubusercontent.com/75328283/151617161-813a434a-1635-4a8c-ab7a-3b2a307c51c7.png)
+
+DialogConfirm-toasty-cancel:
+![confirmDIalog-toasty-cancel](https://user-images.githubusercontent.com/75328283/151617201-e9eea2ca-0963-430b-a49e-adab0334aa1f.png)
+
+messageHandle-padrão:
+![messageHandle-padrão](https://user-images.githubusercontent.com/75328283/151619625-39fbb286-dfd2-4bc2-af21-96d747562972.png)
+
+messageHandle-erroNaPorta:
+![messageHandle-erroNaPorta](https://user-images.githubusercontent.com/75328283/151619584-491f1f75-5031-44ba-a9f0-e29dcf5f1705.png)
+
+messageHandle-erroRecursoNãoEncontrado:
+![messageHandle-erroRecursoNãoEncontrado](https://user-images.githubusercontent.com/75328283/151619667-e436ec27-d777-45fe-9455-534061cbbfc1.png)
+
+statusChange-toasty:
+![status-toasty](https://user-images.githubusercontent.com/75328283/151619927-d7e00431-1223-4754-a6dd-874658fc5bd6.png)
+
+
