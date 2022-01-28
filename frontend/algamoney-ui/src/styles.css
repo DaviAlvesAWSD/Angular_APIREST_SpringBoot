@@ -12,6 +12,12 @@ input {
   height: 30px;
 }
 
+@media (max-width: 500px){
+  .p-dialog{
+    width: 80vw !important;
+  }
+}
+
 @media (min-width: 1200px) {
   .container {
       width: 1170px;
@@ -19,40 +25,47 @@ input {
   }
 }
 
-.label {
-  margin: 0.5em;
+@media (max-width: 1198px) {
+  .container {
+      margin: 0.5rem;
+  }
 }
 
-.pad{
-  padding: 10px;
+.p-sidebar{
+  background-color: #0581c4ea  !important;
 }
 
-.col-valor-header {
-  width: 120px;
-  text-align: center !important;
+.p-sidebar .p-sidebar-content{
+  padding: 0 !important;
 }
 
-.col-valor-content {
-  text-align: center !important ;
+.p-sidebar .p-sidebar-header{
+  padding: 0 !important;
 }
 
-.col-data-header {
-  width: 120px;
+.p-sidebar .p-sidebar-header .p-sidebar-close, .p-sidebar .p-sidebar-header .p-sidebar-icon{
+  color: #fff !important;
+}
+p-calendar .p-calendar .p-inputtext {
+  width: 95px;
 }
 
-.col-data-content {
-  text-align: center !important;
+
+p-calendar .p-button.p-button-icon-only {
+  padding: 0.1rem !important;
 }
 
-.col-acoes-header {
-  width: 115px;
+a {
+  color: #337ab7;
+  text-decoration: none;
 }
 
-.col-acoes {
-  width: 115px;
-  text-align: center !important;
+a:hover, a:focus {
+  text-decoration: underline;
 }
 
-.col-acoes .p-button {
-  margin: 1px;
+a.p-button:hover,
+a.p-button:focus {
+  text-decoration: none;
 }
+

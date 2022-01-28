@@ -1,0 +1,30 @@
+
+@media (max-width: 960px){
+  .col-acoes .btn{
+      margin-left: 0 !important;
+      margin-right: 70% !important;
+  }
+}
+
+
+.label {
+  margin: 0.5em;
+}
+
+.pad{
+  padding: 10px;
+}
+
+.col-acoes-header {
+  width: 115px;
+}
+
+.col-acoes {
+  width: 115px;
+  text-align: right !important;
+}
+
+.col-acoes .p-button {
+  margin: 1px;
+
+}

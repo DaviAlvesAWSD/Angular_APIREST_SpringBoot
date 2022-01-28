@@ -1,0 +1,20 @@
+<nav class="navbar">
+  <div class="container">
+    <div class="p-grid">
+      <div class="p-col-12">
+        <a href="javascript:;" class="navbar-toggle" (click)="gfg = true"><i class="pi pi-list"
+            style="font-weight: bold; font-size: 20px;"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<p-sidebar class="navbar-menu" [(visible)]="gfg" position="left" [baseZIndex]="10000" [style]="{width:'16em'}">
+
+  <li class="navbar-usuario">Adiministrador</li>
+  <li class="navbar-menuitem"><a href="#"><i class="pi pi-th-large lanc"></i>Lançamentos</a></li>
+  <li class="navbar-menuitem"><a href="#"><i class="pi pi-users pes"></i>Pessoas</a></li>
+  <li class="navbar-menuitem"><a href="#"><i class="pi pi-sign-out log"></i>Logout</a></li>
+
+</p-sidebar>
