@@ -1,0 +1,35 @@
+.label {
+  margin: 0.5em;
+}
+
+.pad{
+  padding: 10px;
+}
+
+.col-valor-header {
+  width: 120px;
+  text-align: center !important;
+}
+
+.col-valor-content {
+  text-align: center !important ;
+}
+
+.col-data-header {
+  width: 120px;
+}
+
+.col-data-content {
+  text-align: center !important;
+}
+
+.col-acoes-header {
+  width: 115px;
+}
+
+.col-acoes {
+  width: 115px;
+  text-align: right !important;
+}
+
+

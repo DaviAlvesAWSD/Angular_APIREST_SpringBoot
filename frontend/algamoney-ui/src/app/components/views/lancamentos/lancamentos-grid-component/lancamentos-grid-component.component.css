@@ -1,0 +1,11 @@
+@media (max-width: 960px){
+  .col-acoes .btn{
+      margin-left: 0 !important;
+      margin-right: 70% !important;
+  }
+}
+
+.col-acoes .p-button {
+  margin: 1px;
+
+}

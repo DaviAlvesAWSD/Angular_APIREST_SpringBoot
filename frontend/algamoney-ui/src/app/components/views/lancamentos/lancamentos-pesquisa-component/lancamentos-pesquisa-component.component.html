@@ -1,0 +1,46 @@
+<div class="container">
+  <form autocomplete="off" (ngSubmit)="pesquisar()">
+    <div class="grid">
+      <p-toast position="top-right
+      " [baseZIndex]="50000"></p-toast>
+      <p-confirmDialog [style]="{width: '50vw'}" header="Confirmação" icon="pi pi-question-circle" #confirmacao>
+        <p-footer>
+          <button type="button" pButton icon="pi pi-check" label="Sim" (click)="confirmacao.accept()"></button>
+          <button type="button" pButton icon="pi pi-times" label="Não" (click)="confirmacao.reject()"></button>
+        </p-footer>
+      </p-confirmDialog>
+
+
+      <div class="col-12">
+        <h1>Lançamentos</h1>
+      </div>
+
+      <div class="col-12 p-fluid pad">
+        <label>Descrição</label>
+        <input pInputText type="text" name="descricao" [(ngModel)]="filtro.descricao" #teste>
+      </div>
+
+      <div class="col-12 pad">
+        <label style="display: block">Vencimento</label>
+        <p-calendar class="lanc-calender" dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false"
+          [showIcon]="true" name="vencimentoInicio" [(ngModel)]="filtro.dataVencimentoInicio">
+        </p-calendar>
+
+
+        <label class="label">até</label>
+        <p-calendar class="lanc-calender" dateFormat="dd/mm/yy" [inline]="false" [readonlyInput]="false"
+          [showIcon]="true" name="vencimentoFim" [(ngModel)]="filtro.dataVencimentoFim">
+        </p-calendar>
+
+      </div>
+
+      <div class="col-12">
+        <button pButton type="submit" label="Pesquisar"></button>
+      </div>
+
+    </div>
+  </form>
+
+  <app-lancamentos-grid-component [filtro]="filtro" [totalRegistros]="totalRegistros" [lancamentos]="lancamentos">
+  </app-lancamentos-grid-component>
+</div>

@@ -1,0 +1,41 @@
+<div class="p-grid">
+  <div class="p-col-12">
+    <p-table [value]="lancamentos" [responsive]="true" [paginator]="true" [rows]="filtro.itensPorPagina" [lazy]="true"
+      [totalRecords]="totalRegistros" (onLazyLoad)="aoMudarPagina($event)" #tabela>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Pessoa</th>
+          <th>Descrição</th>
+          <th class="col-data-header">Vencimento</th>
+          <th class="col-data-header">Pagamento</th>
+          <th class="col-valor-header">Valor</th>
+          <th class="col-acoes-header"></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-lancamento>
+        <tr>
+          <td>{{ lancamento.pessoa }}</td>
+          <td>{{ lancamento.descricao }}</td>
+          <td class="col-data-content">{{ lancamento.dataVencimento | date:'dd/MM/y' }}</td>
+          <td class="col-data-content">{{ lancamento.dataPagamento | date:'dd/MM/y'}}</td>
+          <td class="col-valor-content" [style.color]="lancamento.tipo === 'DESPESA' ? 'red' : 'blue'">{{
+            lancamento.valor | currency:'BRL':true:'1.2-2'}}</td>
+          <td class="col-acoes">
+            <a pButton icon="pi pi-pencil" pTooltip="Editar" tooltipPosition="top"></a>
+            <button (click)="aoExcloir(lancamento)" pButton class="btn" icon="pi pi-trash" pTooltip="Excluir"
+              tooltipPosition="top"></button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="6">
+            Nenhum lançamento encontrado
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+    <a pButton label="Novo Lançamento" style="margin-bottom: 5px;"></a>
+
+  </div>
+</div>
