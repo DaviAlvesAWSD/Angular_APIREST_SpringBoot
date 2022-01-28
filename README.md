@@ -132,4 +132,27 @@ Pratica:
 
 ![Protótipo pesquisa e tabela de dados de lançamentos](https://user-images.githubusercontent.com/75328283/148245235-30e3bac0-46ec-4742-af12-e77d1441d0ce.png)
 
+# Dia 28/01/2022
+
+Obs:  uma boa parte do projeto já foi frontend já foi feita então o proximo commit provavelmente será o ultimo. 
+
+- paginação dos dados implementada
+- componente barra de navegação implementado
+- componente de pesquisa de lançamento implementada
+- menu intercambiável implementado 
+- Ngform Implementado
+- Protótipo de cadastro de Lançamento implementado
+- Validação de controles de formulário implementada
+- Serviço de consulta de lançamento implementado
+- Filtro por descrição na  pesquisa de lançamentos implementado
+- Filtro por datas na pesquisa de lançamentos implementado
+- Implementação de paginação no serviço de lançamento
+- Paginação lazy implementada e configurada
+- Consulta e listagem de pessoa implementadas
+- Serviço de exclusão e decorador @ViewChild implementados
+- Mensagens e ConfirmDialog implementados
+- Serviço de tratamento de erros implementado
+- Serviço de exclusão de pessoa implementado
+- errorHendlerService aprofundada
+- Mudança de status de pessoa Implementada
 
