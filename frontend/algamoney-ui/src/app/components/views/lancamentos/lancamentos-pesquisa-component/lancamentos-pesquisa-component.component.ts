@@ -1,6 +1,7 @@
 import { Component, Injectable, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import {ConfirmationService, ConfirmEventType, Message, MessageService } from 'primeng/api';
-import { Table } from 'primeng/table';
 import { ErroHandlerService } from 'src/app/components/core/erro-handler.service';
 import { LancamentoFiltro, LancamentoService } from '../lancamento.service';
 
@@ -25,27 +26,25 @@ export class LancamentosPesquisaComponentComponent implements OnInit {
     private lancamentoService: LancamentoService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
-    private erroHandlerService: ErroHandlerService
-  ){}
+    private erroHandlerService: ErroHandlerService,
+    private route: ActivatedRoute,
+    private title: Title  ){}
 
   ngOnInit(): void{
-
+    this.title.setTitle('Pesquisa de Lançamentos');
   }
 
   //Get Request
   pesquisar(pagina = 0): void{
       this.filtro.pagina = pagina;
-      let resultados: string;
+      const nome = ''
 
       this.lancamentoService.pesquisar(this.filtro)
         .then(resultado => {
-            resultados = resultado.lancamentos.nome;
             this.totalRegistros = resultado.total;
             this.lancamentos = resultado.lancamentos;
-          })
-        .catch(erro => {
-          this.erroHandlerService.handle(erro, resultados);
         });
+
     }
 
 
@@ -59,11 +58,9 @@ export class LancamentosPesquisaComponentComponent implements OnInit {
             switch(type) {
                 case ConfirmEventType.REJECT:
                     this.messageService.add({severity:'error', summary:'Rejeitado', detail:'Ação rejeitada'});
-                    console.log(type);
                 break;
                 case ConfirmEventType.CANCEL:
                     this.messageService.add({severity:'warn', summary:'Cancelado', detail:'Ação cancelada'});
-                    console.log(type);
                 break;
             }
           }

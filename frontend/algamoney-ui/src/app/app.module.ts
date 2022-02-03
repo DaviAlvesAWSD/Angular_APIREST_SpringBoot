@@ -9,9 +9,12 @@ import { PessoasModule } from './components/views/pessoas/pessoas.module';
 
 import { UtilsModule } from './components/utils/utils.module';
 import { CoreModule } from './components/core/core.module';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule, TranslateService } from '@ngx-translate/core';
+import { LancamentosRoutingModule } from './components/views/lancamentos/lancamentos-routing.module';
+import { SegurancaModule } from './components/seguranca/seguranca.module';
+import { MessageService } from 'primeng/api';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   return new TranslateHttpLoader(http);
@@ -27,6 +30,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
   ],
   imports: [
     AppRoutingModule,
+    SegurancaModule,
     LancamentosModule,
     PessoasModule,
     CoreModule,
@@ -40,12 +44,10 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
       }
     }),
 
-
-
-
+    HttpClientModule
 
   ],
-  providers: [ TranslateService],
+  providers: [ TranslateService,MessageService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

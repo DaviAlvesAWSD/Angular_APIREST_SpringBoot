@@ -9,10 +9,14 @@ import { LancamentosPesquisaComponentComponent } from './lancamentos-pesquisa-co
 import { LancamentosCadastroComponentComponent } from './lancamentos-cadastro-component/lancamentos-cadastro-component.component';
 import { LancamentosGridComponentComponent } from './lancamentos-grid-component/lancamentos-grid-component.component';
 
+import { LancamentosRoutingModule } from './lancamentos-routing.module';
 import { UtilsModule } from '../../utils/utils.module';
 import { LancamentoService } from './lancamento.service';
 
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { CategoriaService } from '../categorias/categoria.service';
+import { ErroHandlerService } from '../../core/erro-handler.service';
+import { RouterModule } from '@angular/router';
 
 
 @NgModule({
@@ -24,15 +28,16 @@ import {ConfirmDialogModule} from 'primeng/confirmdialog';
   imports: [
     CommonModule,
     UtilsModule,
-    ConfirmDialogModule
-    
+    ConfirmDialogModule,
+    LancamentosRoutingModule,
+    RouterModule
+
   ],
-  exports: [
-    LancamentosPesquisaComponentComponent,
-    LancamentosCadastroComponentComponent
-  ],
+  exports: [],
   providers: [
+    ErroHandlerService,
     LancamentoService,
+    CategoriaService,
     { provide: LOCALE_ID, useValue: 'pt' },
   ]
 })

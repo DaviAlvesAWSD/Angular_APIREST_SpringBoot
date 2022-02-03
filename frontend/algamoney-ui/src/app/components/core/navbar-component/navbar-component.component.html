@@ -12,9 +12,12 @@
 
 <p-sidebar class="navbar-menu" [(visible)]="gfg" position="left" [baseZIndex]="10000" [style]="{width:'16em'}">
 
-  <li class="navbar-usuario">Adiministrador</li>
-  <li class="navbar-menuitem"><a href="#"><i class="pi pi-th-large lanc"></i>Lançamentos</a></li>
-  <li class="navbar-menuitem"><a href="#"><i class="pi pi-users pes"></i>Pessoas</a></li>
-  <li class="navbar-menuitem"><a href="#"><i class="pi pi-sign-out log"></i>Logout</a></li>
+  <li class="navbar-usuario">{{ usuarioLogado }}</li>
+  <li class="navbar-menuitem" *ngIf="temPermissao('ROLE_PESQUISAR_LANCAMENTO')" routerLinkActive="ativo"><a
+      routerLink="/lancamentos"><i class="pi pi-th-large lanc"></i>Lançamentos</a></li>
+  <li class="navbar-menuitem" *ngIf="temPermissao('ROLE_PESQUISAR_PESSOA')" routerLinkActive="ativo"><a
+      routerLink="/pessoas"><i class="pi pi-users pes"></i>Pessoas</a></li>
+  <li class="navbar-menuitem" routerLinkActive="ativo"><a href="javascript:;" (click)="logout()"> <i
+        class="pi pi-sign-out log"></i>Logout</a></li>
 
 </p-sidebar>

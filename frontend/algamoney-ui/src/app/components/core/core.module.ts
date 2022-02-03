@@ -6,19 +6,25 @@ import { NavbarComponentComponent } from './navbar-component/navbar-component.co
 import { UtilsModule } from '../utils/utils.module';
 import { ErroHandlerService } from './erro-handler.service';
 import { MessageService } from 'primeng/api';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada.component';
+import { AuthService } from '../seguranca/auth.service';
+import { NaoAutorizadoComponent } from './nao-autorizado.component';
+
 
 @NgModule({
   declarations: [
-    NavbarComponentComponent
+    NavbarComponentComponent,
+    PaginaNaoEncontradaComponent,
+    NaoAutorizadoComponent
   ],
   imports: [
     CommonModule,
-    UtilsModule,
+    UtilsModule
 
   ],
   exports: [
     NavbarComponentComponent
   ],
-  providers: [ErroHandlerService,MessageService]
+  providers: [ErroHandlerService,MessageService, AuthService]
 })
 export class CoreModule { }

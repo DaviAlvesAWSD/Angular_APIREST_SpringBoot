@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { ConfirmationService, ConfirmEventType, LazyLoadEvent, MessageService } from 'primeng/api';
 import { Table } from 'primeng/table';
 import { ErroHandlerService } from 'src/app/components/core/erro-handler.service';
@@ -24,28 +25,28 @@ export class PessoasPesquisaComponentComponent implements OnInit {
     private pessoaService: PessoaService,
     private messageService: MessageService,
     private confirmation: ConfirmationService,
-    private erroHandlerService: ErroHandlerService
+    private erroHandlerService: ErroHandlerService,
+    private title: Title
     ){
 
   }
 
   ngOnInit(): void {
-    this.pesquisar();
+    this.title.setTitle('Pesquisa de pessoas');
   }
 
   pesquisar(pagina = 0){
     this.filtro.pagina = pagina;
-    let resultados: string;
+    let nome = '';
 
     this.pessoaService.pesquisar(this.filtro)
       .then(resultado => {
-        resultados = resultado.pessoas.nome;
         this.pessoas = resultado.pessoas;
         this.totalRegistros = resultado.total;
 
       })
       .catch(erro => {
-        this.erroHandlerService.handle(erro, resultados);
+        this.erroHandlerService.handle(erro, nome);
       });
 
   }
@@ -78,15 +79,15 @@ export class PessoasPesquisaComponentComponent implements OnInit {
     this.pessoaService.excluir(pessoa.codigo)
       .then(() =>{
         this.grid.reset();
-        this.messageService.add({severity:'success', summary:'Sucesso', detail:'Lançamento deletado com sucesso'});
+        this.messageService.add({severity:'success', summary:'Sucesso', detail:'Pessoa deletada com sucesso'});
       })
-      .catch(erro => {
+      .catch(( erro: any) => {
         this.erroHandlerService.handle(erro, pessoa.nome);
       });
+
   }
 
   alternarStatus(pessoa: any): void{
-    console.log('teste')
     const novoStatus = !pessoa.ativo;
     this.pessoaService.mudarStatus(pessoa.codigo, novoStatus)
       .then(() =>{
@@ -95,6 +96,9 @@ export class PessoasPesquisaComponentComponent implements OnInit {
         pessoa.ativo = novoStatus;
         this.messageService.add({ severity: 'success', detail: `Pessoa ${acao} com sucesso!` });
       })
+      .catch(erro => {
+        this.erroHandlerService.handle(erro, pessoa.nome);
+      });
   }
 
 }

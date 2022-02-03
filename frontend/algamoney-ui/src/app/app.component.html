@@ -1,10 +1,3 @@
-<app-navbar-component></app-navbar-component>
-<app-pessoas-pesquisa-component></app-pessoas-pesquisa-component>
-
-
-<!--
-<app-lancamentos-pesquisa-component></app-lancamentos-pesquisa-component>
-<app-lancamentos-cadastro-component></app-lancamentos-cadastro-component>
-<app-pessoas-pesquisa-component></app-pessoas-pesquisa-component>
-<app-pessoas-cadastro-component></app-pessoas-cadastro-component>
--->
+<app-navbar-component *ngIf="exibindoNavbar()"></app-navbar-component>
+<router-outlet></router-outlet>
+<p-toast position="top-right"></p-toast>

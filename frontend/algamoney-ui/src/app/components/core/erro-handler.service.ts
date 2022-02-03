@@ -1,31 +1,38 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
+
+import { NotAuthenticatedError } from '../seguranca/money-http-interceptor';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErroHandlerService {
 
-  constructor( private messageService: MessageService) { }
+  constructor(
+    private messageService: MessageService,
+    private router: Router
+    ) { }
 
   handle(errorResponse: any, nome: any){
-    console.log(errorResponse);
     let msg = errorResponse.error[0] ? errorResponse.error[0].mensagemDesenvolvedor : 'null';
     let msgStr: String = msg.toString();
     let SQLIntegrityConstraintViolationException: string = 'SQLIntegrityConstraintViolationException: Cannot delete or update a parent row: a foreign key constraint fails (`algamoneyapi`.`lancamento`, CONSTRAINT `lancamento_ibfk_2` FOREIGN KEY (`codigo_pessoa`) REFERENCES `pessoa` (`codigo`))';
+    let PessoaInexistenteOuInativaException: string = 'com.example.algamoney.api.service.exception.PessoaInexistenteOuInativaException';
 
     //ExceptionHandle Machine
     switch(msgStr){
+      case PessoaInexistenteOuInativaException:
+
+        this.exceptionHandlePessoaInexistenteOuInativaException(errorResponse,nome);
+        break;
       case SQLIntegrityConstraintViolationException:
 
         this.exceptionHandleSQLIntegrityConstraintViolationExceptionParent(errorResponse, nome);
-        console.log(errorResponse.error[0].mensagemDesenvolvedor);
         break;
-
       default:
-
         this.handleException(errorResponse);
-        // console.log(errorResponse.error[0].mensagemDesenvolvedor);
     }
   }
 
@@ -33,28 +40,32 @@ export class ErroHandlerService {
   handleException(errorResponse: any){
     let msg: string;
     let msgH: any;
-
     if(typeof errorResponse === 'string'){
       msg = errorResponse;
+
+    }else if (errorResponse instanceof NotAuthenticatedError) {
+
+
+      msg = 'Sua sessão expirou!';
+      this.router.navigate(['/login']);
+
     }
     else{
-      msg = 'error ao processar serviço. Tente novamente!';
+      msg = 'Erro ao processar serviço. Tente novamente!';
 
-      // msgH = errorResponse.error[0] && errorResponse.Status >= 400 && errorResponse.Status < 500 ? errorResponse.error[0].mensagemUsuario  : 'Error no Servidor' ;
      if(errorResponse.error[0] && errorResponse.status >= 400 && errorResponse.status < 500){
-       msgH = errorResponse.error[0].mensagemUsuario;
-     }
+          msgH = errorResponse.error[0].mensagemUsuario;
+       }
      else if(errorResponse.error.error == "Not Found" && errorResponse.status >= 400 && errorResponse.status < 500){
-        msgH = "Error";
-     }
+          msgH = "Erro na solicitação";
+      }
      else if(!errorResponse.status){
-      msgH = "Error na porta";
-     }
+          msgH = "Erro na porta";
+      }
      else{
-       msgH = "Error no servidor";
-     }
+          msgH = "Erro no servidor";
+      }
 
-      // console.log(errorResponse);
     }
 
 
@@ -63,21 +74,40 @@ export class ErroHandlerService {
 
   }
 
+    // PessoaInexistenteOuInativaException
+    exceptionHandlePessoaInexistenteOuInativaException(errorResponse: any, nome: any){
+      let msg: string = '';
+      let msgH: any;
+
+      if(typeof errorResponse === 'string'){
+        msg = errorResponse;
+      }
+      else{
+
+        msg = 'error ao processar serviço. Pessoa inativa!';
+        msgH = errorResponse.error[0] ? errorResponse.error[0].mensagemUsuario : 'Error';
+      }
+
+      this.messageService.add({severity:'error', summary: msgH , detail: msg });
+
+    }
+
   // SQLIntegrityConstraintViolationExceptionParentException
-  exceptionHandleSQLIntegrityConstraintViolationExceptionParent(errorResponse: any, nome: any){
-    let msg: string;
+  exceptionHandleSQLIntegrityConstraintViolationExceptionParent(errorResponse: any, nome: any): any{
+    let msg: string = '';
     let msgH: any;
 
     if(typeof errorResponse === 'string'){
       msg = errorResponse;
     }
-    else{
+    else if (errorResponse instanceof HttpErrorResponse
+      && errorResponse.status >= 400 && errorResponse.status <= 499){
+
       msg = `error ao processar serviço. ${nome} possui um lançamento registrado!`;
-      msgH = errorResponse.error[0] && errorResponse.status >= 400 && errorResponse.status < 500 ? errorResponse.error[0].mensagemUsuario : 'Error';
-      // console.log(errorResponse);
+      msgH = errorResponse.error[0] ? errorResponse.error[0].mensagemUsuario : 'Error';
     }
 
-    this.messageService.add({severity:'error', summary: msgH , detail: msg });
+    this.messageService.add({severity:'error', summary: msg , detail: msgH });
   }
 
 }

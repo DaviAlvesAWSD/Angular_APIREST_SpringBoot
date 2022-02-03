@@ -1,8 +1,11 @@
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateModule, TranslateLoader, TranslateService } from '@ngx-translate/core';
+import { HttpClient } from '@angular/common/http';
 
 // Primeng components
 import { InputMaskModule } from 'primeng/inputmask';
@@ -21,12 +24,18 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { SelectButtonModule } from 'primeng/selectbutton';
 
+
 // criados
 import { MessageComponent } from './message/message.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ConfirmationService, MessageService } from 'primeng/api';
+import { RouterModule } from '@angular/router';
+import { AuthService } from '../seguranca/auth.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
-
+export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -36,6 +45,7 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     BrowserAnimationsModule,
     BrowserModule,
     CommonModule,
+    RouterModule,
     FormsModule,
     InputMaskModule,
     InputTextModule,
@@ -54,12 +64,21 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     SelectButtonModule,
     HttpClientModule,
 
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
+
   ],
   exports: [
     MessageComponent,
 
     CommonModule,
     FormsModule,
+    RouterModule,
     InputMaskModule,
     InputTextModule,
     InputNumberModule,
@@ -78,6 +97,6 @@ import { ConfirmationService, MessageService } from 'primeng/api';
     HttpClientModule
 
   ],
-  providers: [MessageService, ConfirmationService]
+  providers: [MessageService, ConfirmationService, Title, AuthService, JwtHelperService, TranslateService]
 })
 export class UtilsModule { }

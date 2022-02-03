@@ -41,9 +41,8 @@
   transition: 0.4s;
 }
 
-.navbar-menuitem:active{
-  background-color: #218bc4ea;
-  transition: 0.3s;
+.navbar-menuitem:ativo{
+  background-color: #17648dea;
 }
 
 .back{
