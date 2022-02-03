@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
+import { PrimeNGConfig } from 'primeng/api';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +10,11 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
 
+  constructor(private router: Router){
+
+  }
+
+  exibindoNavbar() {
+    return this.router.url !== '/login';
+  }
 }

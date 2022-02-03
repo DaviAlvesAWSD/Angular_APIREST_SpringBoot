@@ -7,6 +7,8 @@ import { PessoasCadastroComponentComponent } from './pessoas-cadastro-component/
 import { UtilsModule } from '../../utils/utils.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { PessoaService } from './pessoa.service';
+import { RouterModule } from '@angular/router';
+import { PessoasRoutingModule } from './pessoas-routing.module';
 
 
 @NgModule({
@@ -17,13 +19,12 @@ import { PessoaService } from './pessoa.service';
   imports: [
     CommonModule,
     UtilsModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    PessoasRoutingModule
+
 
   ],
-  exports: [
-    PessoasPesquisaComponentComponent,
-    PessoasCadastroComponentComponent
-  ],
+  exports: [ ],
   providers: [PessoaService]
 })
 export class PessoasModule { }

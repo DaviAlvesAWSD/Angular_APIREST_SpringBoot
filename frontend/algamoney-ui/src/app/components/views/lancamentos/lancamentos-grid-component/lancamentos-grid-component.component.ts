@@ -1,6 +1,7 @@
 import { Component, Input, ViewChild } from '@angular/core';
 import { LazyLoadEvent } from 'primeng/api';
 import { Table } from 'primeng/table';
+import { AuthService } from 'src/app/components/seguranca/auth.service';
 import { LancamentoFiltro } from '../lancamento.service';
 import { LancamentosPesquisaComponentComponent } from '../lancamentos-pesquisa-component/lancamentos-pesquisa-component.component';
 
@@ -17,7 +18,10 @@ export class LancamentosGridComponentComponent {
 
     @ViewChild('tabela') grid!: Table;
 
-    constructor(private lancamentosPesquisaComponentComponent: LancamentosPesquisaComponentComponent){ }
+    constructor(
+      private lancamentosPesquisaComponentComponent: LancamentosPesquisaComponentComponent,
+      private auth: AuthService
+      ){ }
 
     // essa função vai ser chamada ao clicar no botão logo em seguida chamando a função certa no outro component
     aoMudarPagina(event: LazyLoadEvent){
@@ -32,10 +36,12 @@ export class LancamentosGridComponentComponent {
         grid: grid,
         lanc: lancamento
       };
-      
+
       this.lancamentosPesquisaComponentComponent.confirmarExclusao(value);
     }
 
 
-
+    naoTemPermissao(permissao: string) {
+      return !this.auth.temPermissao(permissao);
+    }
 }

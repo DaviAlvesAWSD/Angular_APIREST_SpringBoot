@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import * as moment from 'moment';
+import { Lancamento } from '../../utils/model';
+
 
 export class LancamentoFiltro {
   descricao?: string;
@@ -10,6 +12,7 @@ export class LancamentoFiltro {
   pagina = 0;
   itensPorPagina = 3;
 }
+
 @Injectable({
   providedIn: 'root'
 })
@@ -19,9 +22,37 @@ export class LancamentoService {
 
   constructor(private http: HttpClient) { }
 
+//====================================POST request=============================================================
+  adicionar(lancamento: Lancamento): Promise<Lancamento>{
+
+    return <Promise<Lancamento>> this.http.post<Lancamento>(this.lancamentoUrl, lancamento)
+    .toPromise();
+  }
+
+  //====================================GET request=============================================================
+  buscarPorCodigo(codigo: number): Promise<Lancamento> {
+    return this.http.get(`${this.lancamentoUrl}/${codigo}`)
+      .toPromise()
+      .then((response:any) => {
+        this.converterStringsParaDatas([response]);
+
+        return response ? response : null;
+      });
+  }
+
+  private converterStringsParaDatas(lancamentos: any[]) {
+
+    for (const lancamento of lancamentos) {
+
+      lancamento.dataVencimento = new Date(lancamento.dataVencimento);
+
+      if (lancamento.dataPagamento) {
+        lancamento.dataPagamento = new Date(lancamento.dataPagamento);
+      }
+    }
+  }
+
   pesquisar(filtro: LancamentoFiltro): Promise<any>{
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
       let params = new HttpParams()
           .set('page', filtro.pagina)
@@ -42,7 +73,7 @@ export class LancamentoService {
 
 
 
-    return this.http.get(`${this.lancamentoUrl}?resumo`, {headers, params})
+    return this.http.get(`${this.lancamentoUrl}?resumo`, {params})
       .toPromise()
       .then((response: any) =>{
         if(response){
@@ -63,18 +94,23 @@ export class LancamentoService {
           return resultado;
         }
 
-       })
-      .catch( e => {
-        return Promise.reject(e);
-      });
+       });
+  }
+//====================================PUT request=============================================================
+
+  atualizar(lancamento: Lancamento): Promise<Lancamento>{
+
+    return <Promise<Lancamento>> this.http.put<Lancamento>(`${this.lancamentoUrl}/${lancamento.codigo}`,lancamento)
+      .toPromise();
+
   }
 
+//====================================DELETE request=================================================================
   excluir(codigo: number): Promise<void>{
-    const headers = new HttpHeaders()
-      .append('Authorization', 'Basic YWRtaW5AYWxnYW1vbmV5LmNvbTphZG1pbg==');
 
-      return this.http.delete<void>(`${this.lancamentoUrl}/${codigo}`, { headers })
+      return this.http.delete<void>(`http://localhost:8080/lancamento/${codigo}`)
       .toPromise();
+
   }
 
 }

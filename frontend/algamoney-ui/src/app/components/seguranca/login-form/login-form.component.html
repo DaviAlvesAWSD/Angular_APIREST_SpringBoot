@@ -1,0 +1,25 @@
+<div class="container" style="max-width: 400px; margin: auto; margin-top: 10%;">
+  <p-toast position="top-right
+  " [baseZIndex]="50000"></p-toast>
+  <form autocomplete="off" #loginForm="ngForm">
+    <div class="grid">
+      <div class="col-12 p-fluid pad">
+        <h1 style="text-align: center;">Login</h1>
+      </div>
+
+      <div class="col-12 p-fluid pad">
+        <input pInputText type="email" name="usuario" placeholder="E-mail" ngModel required #usuario>
+      </div>
+
+      <div class="col-12 p-fluid pad">
+        <input pInputText type="password" name="senha" placeholder="senha" ngModel required #senha>
+      </div>
+
+      <div class="col-12">
+        <button pButton type="submit" label="Login" [disabled]="loginForm.invalid"
+          (click)="login(usuario.value,senha.value); senha.value='';"></button>
+      </div>
+
+    </div>
+  </form>
+</div>
