@@ -195,4 +195,20 @@ messageHandle-erroRecursoNãoEncontrado:
 statusChange-toasty:
 ![status-toasty](https://user-images.githubusercontent.com/75328283/151619927-d7e00431-1223-4754-a6dd-874658fc5bd6.png)
 
+# Dia 03/02/2022 Atualização final
 
+Ultimos estagios implementados
+
+- serviço de categorias implementado
+- mudanças na implementação e incrementações implementadas
+- segurança da api implementada
+- access token utilizado
+  - Infelizmente nessa parte do projeto tive problemas na implementação do refresh token no front, não conseguir achar alguma solução pois a aplicação nãoestyava conseguindo      pegar o refresh token do cookie(provavelmente seja erro nas versões pois o curs otem um suporte até a versão 12 do angular e eu utilizei a 13)
+- AuthGuard implementado
+- Logout implementado
+
+imagens:
+![login](https://user-images.githubusercontent.com/75328283/152374218-bd1c6c30-16c0-4f88-a0c9-0f52ce2f04f4.png)
+
+
+Curso finalizado, pretendo fazer mais projetos e testar outras versões do angular, visto que não tive problemas em finalizar a parte do backend no sts 4, já no frontend tive problemas com a parte do refreshToken. 
